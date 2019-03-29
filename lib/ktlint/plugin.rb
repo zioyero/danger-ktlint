@@ -49,7 +49,7 @@ module Danger
       results.each {|result|
         result['errors'].each {|error|
           file = "#{result['file']}#L#{error['line']}"
-          message = "#{github.html_link(file)}: #{error['message']}"
+          message = "#{bitbucket.html_link(file)}: #{error['message']}"
           fail(message)
         }
       }
@@ -61,7 +61,7 @@ module Danger
           file = result['file']
           message = error['message']
           line = error['line']
-          fail(message, file: result['file'], line: line)
+          fail(message, file: file, line: line)
         end
       end
     end
@@ -75,7 +75,7 @@ module Danger
     private
 
     def ktlint_exists?
-      system 'which ktlint > /dev/null 2>&1' 
+      system 'which ktlint > /dev/null 2>&1'
     end
   end
 end
