@@ -49,7 +49,7 @@ module Danger
       results.each {|result|
         result['errors'].each {|error|
           file = "#{result['file']}#L#{error['line']}"
-          message = "#{bitbucket_cloud.html_link(file)}: #{error['message']}"
+          message = "#{file}: #{error['message']}"
           fail(message)
         }
       }
